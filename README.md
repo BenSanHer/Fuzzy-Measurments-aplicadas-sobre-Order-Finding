@@ -1,2 +1,3 @@
-En esta carpeta empezaré a subir todos los proyectos de cómputo cuántico personales que haga a modo de respaldo y a su vez, de portafolio personal.
-Algoritmo Order Finding Completo.ipynb es mi archivo relacionado a la aplicación de las mediciones difusas a dicho sistema
+En esta carpeta empezaré a subir los archivos relevantes para la tesis en la que estoy trabajando. 
+El archivo principal sobre el cual se basa este trabajo es Algoritmo de Order Finding Completo, sin embargo
+tengo intenciones de expandir esto para sintetizar en diccionarios y reportes todos mis avances poco a poco
