@@ -1,0 +1,514 @@
+
+%	Este template fue originalmente diseñado para emplearse en el curso de Laboratorio de Mecánica, impartido por la Dra. Areli Huanosta Gutiérrez en la Facultad de Ciencias de la UNAM. El template incluye un archivo de bibliografía .bib que contiene la información de los libros de referencia del curso. Cualquier comentario o sugerencia sobre el template puede ser enviado al correo del autor:
+%	
+
+% --- Paquetes ---
+
+% Básicos
+\documentclass[letterpaper]{article}
+\usepackage[english, mexico, es-noitemize]{babel}
+
+% Matemáticas avanzadas
+\usepackage[tbtags]{amsmath}
+\usepackage{amssymb, amsthm, mathtools, physics}
+\usepackage[nolimits]{cmupint}% Integrales rectas
+
+
+% Selección de fuente: Descomente el segundo bloque y comente el primero para cambiar entre las dos fuentes
+
+% Latin Modern, fuente estándar
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}            
+\usepackage{amsmath}           
+\usepackage{float}            
+\usepackage{wrapfig}          
+\usepackage{booktabs}
+
+% TeX Gyre Schola con fouriernc para mates consistentes con la fuente
+%\usepackage{fouriernc}
+%\usepackage[scale=0.92]{tgschola}
+%\usepackage[T1]{fontenc}
+
+% Configuración del documento
+\usepackage[margin=1in, top=1.25in, headheight=2\baselineskip, headsep=\baselineskip]{geometry}
+\usepackage{fancyhdr}
+\usepackage[pdfusetitle, colorlinks]{hyperref}
+\usepackage[shortlabels, inline]{enumitem}
+\usepackage{multicol, array}
+\usepackage{titlesec}
+\usepackage[titles]{tocloft}
+\usepackage{xcolor, xpatch, calc}
+
+% Gráficos
+\usepackage{graphicx, booktabs, wrapfig, pdfpages}
+\usepackage{pgfplots}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[outline]{contour}
+\usepackage[labelfont=bf, labelsep=period, margin=0.5in]{caption}
+
+% Bibliografía
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
+\addbibresource{repbib.bib}
+
+% Texto de prueba
+\usepackage{lipsum}
+
+% --- Información del documento ---
+
+\title{\mytitle}
+\author{\myauthor}
+\date{\thedate}
+
+
+\newcommand{\mytitle}%
+	{Servicio Social Benjamín Sánchez Hernández}
+	
+\newcommand{\mysubtitle}%
+	{Diccionario: Medidas Fuzzy aplicadas al algoritmo de shor y su injerencia sobre la probabilidad de éxito del mismo}
+
+
+
+
+\newcommand{\myauthor}
+    {Benjamín Sánchez Hernández\\}
+
+\newcommand{\thedate}%
+	{\today}
+
+\newcommand{\thesubject}%
+	{Información y Computación Cuántica}
+
+\newcommand{\firstinstitute}%
+	{Facultad de Ciencias}
+
+\newcommand{\secondinstitute}%
+	{Universidad Nacional Autónoma de México}
+
+\newcommand{\shortinstitute}%
+	{Universidad Nacional Autónoma de México}
+
+	
+
+
+% --- Configuraciones adicionales ---
+
+% Idioma en el preámbulo
+\selectspanish
+
+% Librerías de pgfplots
+\usepgfplotslibrary{colormaps}
+
+% Librerías de tikz
+\usetikzlibrary{babel, calc, scopes, intersections, angles, quotes, arrows, arrows.meta, backgrounds, shapes.geometric, patterns, shadows, perspective, external}
+
+% Descomentar la siguiente línea para externalizar gráficos
+%\tikzexternalize
+
+% Versión de PGFplots
+\pgfplotsset{compat=newest}
+
+% Definición de estilos de Tikz, etc.
+\tikzset{%
+	% Configuraciones de tikz particulares del documento, como estilos de nodos y dibujos
+	font = {\selectfont},
+	frame/.style={thin, dashed, lightgray, line cap=round, rounded corners=5pt}
+}
+
+% Grosor de contorno adicional (para emplearse en gráficos)
+\contourlength{1pt}
+
+% Directorios de gráficos
+\graphicspath{{imágenes/}{escudos/}}
+
+% Todos los enlaces del documento en negro
+\hypersetup{allcolors=black}
+
+% Listas personalizadas
+\setlist[enumerate, 1]{%
+	label=\textbf{\color{\emphcolor}\arabic*.},
+	labelindent=\parindent,
+	itemindent=*,
+	ref=\textbf{\arabic*}
+}
+\setlist[enumerate, 2]{%
+	label=\textbf{\color{\emphcolor}(\alph*)},
+	itemindent=*,
+	ref=\textbf{(\alph*)}
+}
+\setlist[enumerate, 3]{%
+	label=\color{\emphcolor}\roman*.,
+	itemindent=*,
+	ref=\roman*
+}
+
+% Redefinición de "y otros" en la bibliografía
+\DefineBibliographyStrings{spanish}{andothers={et~al\adddot}}
+
+% Personalización de ToC
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecpresnum}{\color{\emphcolor}}
+\renewcommand{\cftsecaftersnum}{.}
+\setlength{\cftsecindent}{25pt}
+\renewcommand{\cftsecafterpnum}{\hspace*{25pt}}
+\setlength{\cftbeforesecskip}{\baselineskip/2}
+
+% --- Comandos de mate adicionales ---
+
+\newcommand{\rtwovec}[2]{% Vectores columna en R^2 
+	\begin{bmatrix*}[r]
+		#1 \\ #2 
+	\end{bmatrix*}
+}
+
+\newcommand{\rthreevec}[3]{% Vectores columna en R^3
+	\begin{bmatrix*}[r]
+		#1 \\ #2 \\ #3
+	\end{bmatrix*}
+}
+
+\newcommand{\uvec}[1]{% Vectores unitarios (con gorrito)
+	\textbf{\^{#1}}
+}
+
+\newenvironment{amatrix}[2]{% Matices aumentadas
+	\left[\begin{array}{@{}*{#1}{r}|*{#2}{r}@{}}
+	}%
+	{
+	\end{array}\right]
+}
+
+\DeclareMathOperator{\mcd}{mcd}% Máximo común divisor
+\DeclareMathOperator{\midd}{med}% Número medio
+
+% Descomentar esta línea si se elige fouriernc para la fuente matemática y emplear en vez de \nabla
+%\newcommand{\Nabla}{\scalebox{1.075}{$\nabla$}}
+
+% --- Diseño de documento ---
+
+% Colores
+% \definecolor{emphcolor}{HTML}{0B4166}% Color de énfasis personalizado
+\newcommand{\emphcolor}{gray}% Escribir emphcolor dentro de las llaves, si se define
+
+% Longitudes
+%\setlength{\columnsep}{0.5in}% Separación entre columnas
+
+% Diseño de títulos de sección
+\titleformat{\section}[hang]
+{\Large\centering\bfseries}
+{\thetitle.}{\widthof{\ }}{\Large\color{\emphcolor}}
+
+% Título de documento
+\newcommand{\cover}{%
+	\thispagestyle{plain}
+	\begin{center}
+		\Large\textbf{\textcolor{\emphcolor}{\mytitle}} \\
+		\LARGE\textbf{\mysubtitle}
+		\bigskip
+		
+		\normalsize\myauthor \\
+		\small\myemail
+		\medskip
+		
+		\normalsize\firstinstitute \\ 
+		\secondinstitute
+		\medskip
+		
+		\normalsize\thedate \\
+	\end{center}%
+}
+
+% Comandos para ingresar keywords en el abstract
+\newcommand{\espkeywords}{\noindent\textit{Palabras clave:\ }}
+\newcommand{\engkeywords}{\noindent\textit{Keywords:\ }}
+
+% Tipos de columna útiles
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\arraybackslash}m{#1}}
+
+% Rediseño del estilo plain
+\fancypagestyle{plain}{%
+	\renewcommand{\headrulewidth}{0pt}
+	
+	\fancyhf{}
+	\fancyfoot[c]{%
+		\begin{tabular}{M{1em}@{}M{2em}@{}M{1em}}
+			\textcolor{\emphcolor}{$\boldsymbol{-}$}
+			& \thepage &
+			\textcolor{\emphcolor}{$\boldsymbol{-}$}
+		\end{tabular}
+	}
+}
+
+% Diseño de los encabezados y pies de página
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{1pt}% Ancho de la regla en el encabezado
+\xpretocmd\headrule{\color{\emphcolor}}{}{\PatchFailed}% Cambio de color de la regla en el encabezado
+
+\fancyhf{}
+\fancyhead[l]{%
+	\begin{tabular}{@{}R{2.25em}@{}R{\widthof{\shortinstitute\ }}}
+		\includegraphics[height=.25in]{escudos/FCunam.svg}% Escudo de la institución
+		& \shortinstitute
+	\end{tabular}
+}
+\fancyhead[r]{%
+	\textit{\thesubject}% Nombre de la asignatura
+}
+\fancyfoot[c]{%
+	\begin{tabular}{M{1em}@{}M{2em}@{}M{1em}}
+		\textcolor{\emphcolor}{$\boldsymbol{-}$}
+		& \thepage &
+		\textcolor{\emphcolor}{$\boldsymbol{-}$}
+	\end{tabular}
+}
+
+
+% --- Inicio del documento ---
+
+\begin{document}
+	
+	\unspacedoperators
+	
+% --- Página de título ---
+	
+	\phantom{.}
+	\cover
+
+	\selectlanguage{english}
+
+
+
+	
+% --- Cuerpo del reporte ---
+
+
+
+
+	\section{Conceptos clave a manejar para poder trabajar con el reporte}
+
+
+\begin{enumerate}
+    \item \textbf{Definición (Orden).} 
+    Sea $a$ un entero tal que $\gcd(a,N)=1$. 
+    El \emph{orden de $a$ módulo $N$}, denotado por $r$, es el entero positivo más pequeño que satisface
+    \[
+    a^{r} \equiv 1 \pmod{N}.
+    \]
+    Es decir, $r$ es el menor entero tal que $a^{r}$ deja residuo $1$ al dividirse entre $N$.
+
+    \item \textbf{Definición (Quantum Phase Estimation, QPE).}
+    Sea $U$ un operador unitario y $\ket{u}$ un autovector suyo tal que
+    \[
+    U\ket{u} = e^{2\pi i \phi}\ket{u},
+    \]
+    con $\phi \in [0,1)$. El algoritmo de \emph{Quantum Phase Estimation (QPE)} tiene como objetivo estimar el valor de la fase $\phi$.
+
+    El procedimiento emplea dos registros: (1) un registro de control (o ancilla) preparado en superposición uniforme mediante puertas Hadamard, y (2) un registro (principal) que contiene el estado $\ket{u}$. El algoritmo aplica potencias controladas del unitario $U$, de la forma $U^{2^k}$, que codifican la fase $\phi$ en el registro de control. Posteriormente se ejecuta la Transformada de Fourier Cuántica inversa (QFT$^{-1}$) sobre 
+    dicho registro.
+
+    Tras la medición del registro de control, el resultado corresponde a una aproximación binaria del valor de $\phi$ cuya precisión depende del 
+    número de qubits empleados en dicho registro.
+
+    \item \textbf{Definición (Rutina de Order Finding).}
+Dado un entero $a$ tal que $\gcd(a,N)=1$, la \emph{rutina de order finding} busca determinar el orden $r$ de $a$ módulo $N$, es decir, el menor entero positivo que satisface $a^{r} \equiv 1 \pmod{N}$.
+
+El procedimiento emplea el algoritmo de Quantum Phase Estimation (QPE) sobre el operador unitario
+\[
+U\ket{x} = \ket{a x \bmod N},
+\]
+cuyos autovectores son los estados periódicos asociados al orden $r$ y cuyos autovalores tienen la forma $e^{2\pi i s/r}$ para algún entero 
+$0 \le s \le r-1$.
+
+QPE se implementa preparando un registro de control en superposición uniforme mediante puertas Hadamard, seguido de la aplicación de potencias controladas del unitario $U$, de la forma $U^{2^k}$. Esta interacción codifica la fase $s/r$ en el registro ancilla. Finalmente, se aplica la Transformada de Fourier Cuántica inversa (QFT$^{-1}$) y se mide dicho registro.
+
+La medición produce en el registro ancilla una aproximación a la fracción
+\[
+\frac{s}{r},
+\]
+donde $s$ es un entero tal que $0 \le s \le r-1$. A partir de esta aproximación se recupera el orden $r$ mediante el algoritmo clásico de fracciones continuas.
+
+\item\textbf{Definición (Algoritmo de Fracciones Continuas).}
+El algoritmo de fracciones continuas es un procedimiento clásico que, dado un número racional o una aproximación decimal $x$, construye su expansión en fracción continua
+\[
+x = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cdots}},
+\]
+donde los $a_i$ son enteros llamados coeficientes parciales.
+
+A partir de esta expansión se obtienen fracciones de la forma 
+$\frac{p_k}{q_k}$, llamadas \emph{convergentes}, que aproximan a $x$ con precisión creciente y satisfacen
+\[
+\left| x - \frac{p_k}{q_k} \right| < \frac{1}{q_k^2}.
+\]
+
+En el contexto de la rutina de order finding, el algoritmo recibe una aproximación de la forma $x \approx s/r$ obtenida mediante QPE y recupera el denominador $r$ identificando el convergente cuyo denominador $q_k$ satisface la condición $a^{q_k} \equiv 1 \pmod{N}$.
+
+\item\textbf{Definición (Valores de éxito).}
+Se denominan \emph{valores de éxito} a aquellos resultados de la medición $y$ en el registro ancilla del order finding tales que la aproximación
+\[
+\frac{y}{2^n} \approx \frac{s}{r}
+\]
+es lo suficientemente precisa para que el algoritmo de fracciones continuas recupere la fracción $\frac{s}{r}$ con su denominador irreducible igual a 
+$r$. En particular, los valores de éxito satisfacen
+\[
+\left| \frac{y}{2^n} - \frac{s}{r} \right| < \frac{1}{2r^2}.
+\]
+
+Además, un valor $y$ \emph{deja de ser de éxito} si la fracción obtenida mediante fracciones continuas es reducible, es decir, si existe un divisor 
+$d>1$ tal que
+\[
+\frac{s}{r} = \frac{s/d}{r/d}.
+\]
+En tal caso, el denominador obtenido no corresponde al orden real buscado.
+
+\item \textbf{Definición (Probabilidad de éxito del algoritmo de Order Finding).}
+
+Sea $\mathcal{Y}_{\mathrm{ex}}$ el conjunto de \emph{valores de éxito}, es decir, los resultados de medición $y$ en el registro de fase de QPE que permiten recuperar correctamente la fracción irreducible $\frac{s}{r}$ mediante el algoritmo de fracciones continuas. Si $P(y)$ denota la probabilidad de medir el resultado $y$, entonces la probabilidad total de 
+éxito del algoritmo de order finding se define como
+
+\[
+P_{\mathrm{ex}} = \sum_{y \in \mathcal{Y}_{\mathrm{ex}}} P(y).
+\]
+
+Esta probabilidad representa la posibilidad de que el algoritmo complete correctamente todas sus etapas y devuelva el orden real $r$.
+
+\item\textbf{Definición (Medición Difusa).}
+Una \emph{medición difusa} es un proceso de medición cuántica en el que existeincertidumbre respecto a qué qubit o subsistema fue realmente observado. Este fenómeno se modela mediante un canal completamente positivo y
+trazapreservante de la forma
+
+\[
+F[\rho] = \sum_{P \in S} p_P\, P \rho P^\dagger,
+\]
+
+donde $\rho$ es el estado inicial del sistema, $S$ es un conjunto de permutaciones que representan confusión entre qubits, cada $P\in S$ es un operador de permutación (por ejemplo, una compuerta SWAP) y los coeficientes $\{p_P\}$ constituyen una distribución de probabilidad.
+
+Físicamente, una medición difusa describe la pérdida parcial de información debida a la incapacidad del detector para identificar correctamente el qubit medido.
+
+\textit{Hasta la fecha de elaboración de este reporte, las mediciones difusas empleadas en la literatura y en las implementaciones consideradas utilizan únicamente un operador de permutación}. En tales casos, el canal adopta la forma
+
+\[
+F[\rho] = p\, P\rho P^\dagger + (1-p)\rho,
+\]
+
+donde $P$ es típicamente una compuerta SWAP que actúa sobre varios qubits.
+
+\item\textbf{Definición (Probabilidad de error de una medición difusa).} La \emph{probabilidad de error} de una medición difusa es el valor $p$ que aparece en la definición del canal cuántico
+
+\[
+F[\rho] = p\, P\rho P^\dagger + (1-p)\rho,
+\]
+
+y representa la probabilidad de que el sistema experimente la permutación $P$ asociada a la confusión del detector, frente a la probabilidad $1-p$ de que el estado permanezca sin alteración.
+
+En general, distintos tipos de mediciones difusas pueden involucrar múltiples operadores de permutación, cada uno con su propio valor de probabilidad. No obstante, dado que en este reporte únicamente se considera un tipo de medición difusa basado en una única compuerta SWAP, la probabilidad de error de la medición difusa se define como el valor único $p$ asociado a dicha permutación.
+
+\item\textbf{Definición (Medición difusa entre 2 qubits).}
+Una \emph{medición difusa entre 2 qubits} es un tipo particular de medición difusa en el que la incertidumbre del detector se modela mediante una única compuerta SWAP aplicada entre dos qubits arbitrarios del sistema. Esta permutación representa la posibilidad de que el detector confunda cuál de los dos qubits produjo el resultado.
+
+El canal cuántico correspondiente está dado por
+
+\[
+F[\rho] = p\, \mathrm{SWAP}_{i,j}\, \rho\, \mathrm{SWAP}_{i,j}^\dagger + (1-p)\rho,
+\]
+
+donde $\rho$ es el estado cuántico previo, $\mathrm{SWAP}_{i,j}$ es la compuerta que intercambia los qubits $i$ y $j$, y $p$ es la probabilidad de error asociada a esta medición difusa.
+
+\item \textbf{Definición (Medición difusa circular).}
+Una \emph{medición difusa circular} es un tipo de medición difusa cuyo error se modela mediante una permutación circular del registro. Dicha permutación rota las posiciones del sistema un número $k$ de lugares, donde $1 \le k \le l-1$, enviando cada qubit a una posición desplazada cíclicamente.
+
+Para una rotación de $k$ posiciones, la permutación circular satisface
+
+\[
+P_{\mathrm{circ},k}(i) = i+k \pmod{l},
+\]
+
+de modo que casos particulares incluyen rotaciones de $1$, $2$, \ldots, $k$ lugares.
+
+El canal cuántico correspondiente se define como
+
+\[
+F[\rho] = p\, P_{\mathrm{circ},k}\, \rho\, P_{\mathrm{circ},k}^\dagger + (1-p)\rho,
+\]
+
+donde $P_{\mathrm{circ},k}$ es la permutación circular de $k$ posiciones, $p$ es la probabilidad de error y $\rho$ es el estado cuántico previo.
+
+\item\textbf{Definición (Medición difusa entre todas las parejas adyacentes).} Una \emph{medición difusa entre todas las parejas adyacentes} es un tipo de medición difusa en la que la confusión se modela mediante una permutación que intercambia simultáneamente cada par de qubits adyacentes del registro, es decir, las parejas $(1,2)$, $(3,4)$, $(5,6)$, \ldots.
+
+El canal cuántico correspondiente se define como
+
+\[
+F[\rho] = p\, P_{\mathrm{adj}}\, \rho\, P_{\mathrm{adj}}^\dagger + (1-p)\rho,
+\]
+
+donde $P_{\mathrm{adj}}$ es la permutación compuesta por todos los SWAP adyacentes, $p$ es la probabilidad de error y $\rho$ es el estado cuántico previo.
+
+\item \textbf{Definición (Probabilidad de éxito del algoritmo de \emph{Order Finding} con medición difusa).}
+Sea $P_{\mathrm{ex}}$ la probabilidad de éxito ideal del algoritmo de \emph{order finding}, definida como la suma de las probabilidades de todos los valores de éxito obtenidos mediante QPE. Cuando el algoritmo está sujeto a una medición difusa modelada por el canal
+\[
+F[\rho] = (1-p)\rho + p\,P\rho P^\dagger,
+\]
+la \emph{probabilidad de éxito bajo medición difusa} se define como
+\[
+P_{\mathrm{ex}}(p) = \sum_{y \in \mathcal{Y}_{\mathrm{ex}}} P_p(y),
+\]
+donde $P_p(y)$ es la probabilidad (modificada por el canal difuso) de obtener el resultado $y$ en el registro de fase, y $\mathcal{Y}_{\mathrm{ex}}$ es el conjunto de valores de éxito.
+
+Esta cantidad representa la probabilidad real de recuperar correctamente el orden $r$ cuando la medición está sujeta a error difuso con probabilidad $p$.
+
+
+\item \textbf{Definición (Ajuste lineal de la probabilidad de éxito).}
+Dado que la medición difusa se modela mediante un canal lineal en la probabilidad de error $p$, la probabilidad de éxito del algoritmo de \emph{order finding} bajo dicho error se comporta como una función lineal de la forma
+\[
+p_{\mathrm{éxito}} = -m\,p_{\mathrm{error}} + b,
+\]
+donde $p_{\mathrm{error}} = p$ es la probabilidad de que se aplique el error difuso, $m$ es la pendiente que caracteriza la degradación inducida por el error, y $b$ es la probabilidad de éxito del algoritmo en ausencia de error.
+
+\item \textbf{Definición (Probabilidad de éxito sin error).}
+La constante $b$ del ajuste lineal
+\[
+p_{\mathrm{éxito}} = -m\,p_{\mathrm{error}} + b
+\]
+representa la probabilidad de éxito del algoritmo de \emph{order finding} cuando no hay error de medición difusa, es decir:
+\[
+p_{\mathrm{éxito}}(p_{\mathrm{error}}=0)=b.
+\]
+Este valor corresponde al rendimiento ideal del algoritmo sin perturbaciones externas.
+
+\item \textbf{Definición (Probabilidad residual bajo error máximo).}
+Cuando la probabilidad de error alcanza su valor máximo $p_{\mathrm{error}}=1$, el ajuste lineal implica que la probabilidad residual de éxito del algoritmo es
+\[
+p_{\mathrm{éxito}}(1)=b-m.
+\]
+El valor $b-m$ cuantifica la fracción del rendimiento del algoritmo que sobrevive incluso bajo la acción continua del error de medición difusa y permite caracterizar la resiliencia del algoritmo frente a la permutación asociada a dicho error.
+
+\item \textbf{Definición (Porcentaje de éxito restante bajo medición difusa).}
+Sea $P_{\mathrm{ex}}(0)$ la probabilidad de éxito del algoritmo de  \emph{order finding} sin errores de medición difusa (esto es, con $p=0$), y sea $P_{\mathrm{ex}}(p)$ la probabilidad de éxito cuando el canal de medición difusa se aplica con probabilidad de error $p$.
+
+El \emph{porcentaje de éxito restante} se define como la fracción de la  probabilidad de éxito original que sobrevive después de introducir un error  difuso, es decir,
+
+\[
+R(p) \;=\; \frac{P_{\mathrm{ex}}(p)}{P_{\mathrm{ex}}(0)} \times 100\%.
+\]
+
+Esta cantidad mide qué tanto del desempeño ideal del algoritmo se conserva  cuando la medición está sujeta a error, y permite cuantificar la degradación  relativa provocada por la medición difusa.
+
+
+
+\end{enumerate}
+
+    
+    
+	
+%----Por ultimo hacemos la seccion de referencias--
+\addcontentsline{toc}{section}{Referencias}
+       
+\printbibliography[heading=bibintoc]
+	
+	
+	
+
+\end{document}
