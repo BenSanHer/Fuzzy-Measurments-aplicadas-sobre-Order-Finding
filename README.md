@@ -1,31 +1,32 @@
 # Tesis — Mediciones Difusas en el Algoritmo de Shor
 
-Este repositorio contiene el desarrollo de mi tesis enfocada en el estudio del efecto de mediciones difusas (fuzzy measurements) sobre el algoritmo de Shor.
+Este repositorio contiene el desarrollo estructurado de la tesis enfocada en el estudio del efecto de mediciones difusas sobre el algoritmo de Shor.
 
-## Objetivo general
+## Objetivo
 
-Analizar cómo las mediciones difusas alteran la distribución de probabilidad del algoritmo de Shor y estudiar su impacto en la probabilidad de éxito.
+Analizar cómo las mediciones difusas alteran la distribución de probabilidad del algoritmo de Shor y estudiar su impacto en la información extraída del sistema.
 
-## Líneas actuales de investigación
+## Filosofía del repositorio
 
-1. Modelado de mediciones difusas como transformaciones sobre distribuciones de probabilidad.
-2. Estudio de curvas de información mutua inducidas por estas transformaciones.
-3. Exploración de métodos para estimar o parametrizar el efecto de las mediciones difusas sobre la probabilidad de éxito del algoritmo de Shor.
+Este repositorio está diseñado como un sistema de investigación estructurado que separa:
 
-## Estructura del repositorio
+- Conocimiento adquirido
+- Objetivos de investigación
+- Exploración experimental
+- Resultados reproducibles
+- Bitácora de trabajo
 
-- `00_fundamentos/`: conceptos teóricos organizados de forma modular. (La información esta en proceso de re-escritura para mayor adaptación al enfoque actual)
-- `01_direcciones_investigacion/`: problemas abiertos y líneas de trabajo activas.
-- `02_experimentos/`: notebooks separados por objetivo experimental.  
-- `03_bitacora/`: registro de avances y decisiones.
-- `04_reportes/`: documentos formales.
-- `supervisor/`: interacción directa para revisión y feedback.
-- `legado/` : los notebooks originales a partir de los cuales estoy realizando este trabajo de investigación
+## Estructura
+
+- `00_conocimiento/`: teoría y notas organizadas
+- `01_objetivos_investigacion/`: problemas abiertos y dirección
+- `02_laboratorio/`: exploración libre
+- `03_experimentos_formales/`: resultados estructurados
+- `04_bitacora/`: registro de decisiones y avances
+- `05_referencias/`: papers y fuentes
+- `supervisor/`: interacción con asesores
+- `legado/`: trabajo original y evolución metodológica
 
 ## Estado actual
 
-El repositorio está en proceso de reestructuración para facilitar el análisis sistemático del problema y la comunicación con mi asesor
-
-## Nota
-
-Parte del trabajo actual se centra en el análisis de patrones observados en curvas de información mutua, cuyo comportamiento aún no está completamente comprendido.
+Repositorio en reestructuración para transición de bitácora personal a sistema formal de investigación.
