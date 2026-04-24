@@ -1,16 +1,29 @@
 # Experimentos Formales
 
-Esta sección contiene experimentos estructurados y reproducibles.
+Esta sección contiene experimentos estructurados, limpios y reproducibles.
 
 ## Contenido
 
-Cada carpeta corresponde a un experimento con:
+Cada carpeta incluye:
 
-- Notebook limpio
-- Definición clara del problema
+- Notebook principal
+- Definición del problema
 - Resultados
 - Observaciones
 
-## Objetivo
+## Criterios de inclusión
 
-Separar resultados formales de la exploración.
+Un experimento se considera formal cuando:
+
+- Es reproducible de inicio a fin
+- Tiene un objetivo claro
+- El código está limpio
+- No contiene exploración innecesaria
+
+## Relación con laboratorio
+
+Todos los experimentos formales provienen de:
+
+`02_laboratorio/`
+
+pero han sido refinados.
